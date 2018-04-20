@@ -94,6 +94,18 @@ MetaInspector.prototype.getOgType = function()
 	return this;
 }
 
+MetaInspector.prototype.getOgVideoUrl = function()
+{
+	debug("Parsing page's embed url of video");
+
+	if(this.ogVideoUrl === undefined)
+	{
+		this.ogVideoUrl = this.parsedDocument("meta[property='og:video:url']").attr("content");
+	}
+
+	return this;
+}
+
 MetaInspector.prototype.getOgUpdatedTime = function()
 {
 	debug("Parsing page's Open Graph Updated Time");
@@ -290,6 +302,7 @@ MetaInspector.prototype.initAllProperties = function()
 			.getOgTitle()
 			.getOgDescription()
 			.getOgType()
+			.getOgVideoUrl()
 			.getOgUpdatedTime()
 			.getOgLocale();
 }
